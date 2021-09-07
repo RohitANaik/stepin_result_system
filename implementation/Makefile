@@ -1,0 +1,48 @@
+PROJ_NAME = studentdetails
+
+BUILD = build
+
+SRC = src/add_student.c\
+src/delete_student.c\
+src/display_student.c\
+src/modify_student.c\
+src/search_student.c\
+src/utility.c\
+
+TEST_SRC = ${SRC}\
+test/studentdetails_test.c\
+unity/unity.c\
+
+TEST_OUTPUT = $(BUILD)/Test_$(PROJ_NAME).TEST_OUTPUT
+
+INC = -Iinc\
+-Iunity\
+
+INCLUDE_LIBS = 
+
+PROJECT_OUTPUT = $(BUILD)/$(PROJ_NAME).TEST_OUTPUT
+
+DOCUMENTATION_OUTPUT = documentation/html
+
+$(PROJ_NAME):all
+
+.STUD: run clean test doc all
+
+all: $(SRC) $(BUILD)
+      gcc studentdetails.c $(SRC) $(INC) -o $(PROJECT_OUTPUT).TEST_OUTPUT
+
+run: $(PROJ_NAME)
+      ./$(PROJECT_OUTPUT).TEST_OUTPUT
+
+doc:
+      make -C ./documentation
+
+test:$(BUILD)
+      gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
+      ./$(TEST_OUTPUT)
+
+clean:
+      rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT) students.bin
+
+$(BUILD):
+      mkdir build
