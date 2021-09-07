@@ -38,15 +38,34 @@ Research:
 6. student result system by KUMAR ANAND and MD TARIQUL AZAM
 
 4 W's and 1 H's
+
 Who:
 The User with student details
+
 What:
 Students results
+
 Where:
 In files
+
 When:
 When student result is to be seen
+
 How:
 By selecting the appropriate actions
+
+#high level requirements
+1. add student details
+2. delete student details
+3. modify student details
+4. search student details
+5. display student details
+
+#low level requirements
+1. student name
+2. student ID
+3. student age
+4. student marks
+5. create student.bin file
  
 
