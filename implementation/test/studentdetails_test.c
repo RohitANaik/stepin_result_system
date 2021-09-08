@@ -13,14 +13,14 @@ void tearDown()
 
 void test_add_student(void)
 {
-  student_t new_student = {"Rohit","01feqwert",22,99};
+  student_t new_student = {"abc","01feqwert",22,99};
   TEST_ASSERT_EQUAL(0, add_student(&new_student));
 }
 
 
 void test_delete_student(void)
 {
-  student_t new_student = {"Rohit","01feqwert",22,99};
+  student_t new_student = {"abcd","01feqwerqt",223,939};
   TEST_ASSERT_EQUAL(0, add_student(&new_student));
   TEST_ASSERT_EQUAL(0, delete_student(new_student.name));
 }
