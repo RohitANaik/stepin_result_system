@@ -1,5 +1,7 @@
 PROJ_NAME = studentdetails
 
+BUILD =build
+
 SRC = src/add_student.c\
 src/delete_student.c\
 src/display_student.c\
@@ -39,6 +41,9 @@ DOCUMENTATION_OUTPUT = documentation/html
 $(PROJ_NAME):all
 
 .PHONY: run clean test doc all
+
+run: $(PROJ_NAME)
+      ./$(PROJECT_OUTPUT).TEST_OUTPUT
 
 all: $(SRC) $(BUILD)
       gcc studentdetails.c $(SRC) $(INC) -o $(PROJECT_OUTPUT).TEST_OUTPUT
