@@ -1,7 +1,5 @@
 PROJ_NAME = studentdetails
 
-BUILD = build
-
 SRC = src/add_student.c\
 src/delete_student.c\
 src/display_student.c\
@@ -45,8 +43,6 @@ $(PROJ_NAME):all
 all: $(SRC) $(BUILD)
       gcc studentdetails.c $(SRC) $(INC) -o $(PROJECT_OUTPUT).TEST_OUTPUT
 
-run: $(PROJ_NAME)
-      ./$(PROJECT_OUTPUT).TEST_OUTPUT
 
 doc:
       make -C ./documentation
