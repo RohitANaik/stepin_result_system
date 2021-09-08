@@ -25,7 +25,7 @@ int main()
         scanf("%d", &choice);
 
         switch (choice){
-            case ADD_STUDENT: {
+            case 1: {
                 student_t *new_student = (student_t *)calloc(1, sizeof(student_t));
 
                 get_student_details(new_student);
@@ -39,7 +39,7 @@ int main()
                 free(new_student);
                 break;
             }
-            case DELETE_STUDENT: {
+            case 2: {
                 int student_count = display_student();
                 if (0 < student_count) {
                      char name[max_name_length] = "";
@@ -69,7 +69,7 @@ int main()
                 }
                 break;
             }
-            case MODIFY_STUDENT: {
+            case 3: {
                 int student_count = display_student();
                 if (0 < student_count) {
                      char name[max_name_length] = "";
@@ -102,7 +102,7 @@ int main()
                 }
                 break;
             }
-            case DISPLAY_STUDENT:
+            case 4:
             switch (display_student()){
                 case -2:
                 printf("\n\t***No Student found***\n\n");
@@ -115,7 +115,7 @@ int main()
             }
             break;
 
-            case SEARCH_STUDENT: {
+            case 5: {
                 int student_count = display_student();
                 if (0 < student_count) {
                      char name[max_name_length] = "";
