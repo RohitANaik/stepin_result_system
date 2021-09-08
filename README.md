@@ -7,3 +7,5 @@ https://www.code-inspector.com/project/27715/status/svg
 [![C/C++ CI](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/C%20build.yml/badge.svg)](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/C%20build.yml)
 
 https://www.code-inspector.com/project/27715/score/svg
+
+[![Code Quality - Cppcheck](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/cppcheck.yml)
