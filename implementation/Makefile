@@ -40,7 +40,7 @@ DOCUMENTATION_OUTPUT = documentation/html
 
 $(PROJ_NAME):all
 
-.STUD: run clean test doc all
+.PHONY: run clean test doc all
 
 all: $(SRC) $(BUILD)
       gcc studentdetails.c $(SRC) $(INC) -o $(PROJECT_OUTPUT).TEST_OUTPUT
