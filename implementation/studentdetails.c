@@ -47,7 +47,7 @@ int main()
                     printf("enter student's name from the above list:");
                     get_data(name);
 
-                    switch (delete_contact(name))
+                    switch (delete_student(name))
                     {
                     case -1:
                         printf("\n\t***No matching student found***\n");
