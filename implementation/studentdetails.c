@@ -20,7 +20,7 @@ int main()
         printf("\nSelect your choice: \n");
         printf("1.add student \n2.modify student\n3.delete student \n4.display all student \n5.Search for a student\n6.Exit\n");
 
-        print("enter your choice:");
+        printf("enter your choice:");
         __fpurge(stdin);
         scanf("%d", &choice);
 
