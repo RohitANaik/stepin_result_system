@@ -9,3 +9,5 @@ https://www.code-inspector.com/project/27715/status/svg
 https://www.code-inspector.com/project/27715/score/svg
 
 [![Code Quality - Cppcheck](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/cppcheck.yml)
+
+[![CI-Coverage](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/gcov.yml/badge.svg)](https://github.com/RohitANaik/stepin_studentdetails/actions/workflows/gcov.yml)
