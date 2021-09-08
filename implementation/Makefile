@@ -1,7 +1,7 @@
 PROJ_NAME = studentdetails
 TEST_PROJ_NAME = Test_$(PROJ_NAME)
 
-BUILD_DIR = implementation
+BUILD_DIR = resultsystem.exe
 
 # All source code files
 SRC =src/add_student.c\
