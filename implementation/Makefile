@@ -1,27 +1,23 @@
 PROJ_NAME = studentdetails
+TEST_PROJ_NAME = Test_$(PROJ_NAME)
 
-BUILD =build
+BUILD_DIR = Build
 
-SRC = src/add_student.c\
+# All source code files
+SRC =src/add_student.c\
 src/delete_student.c\
-src/display_student.c\
-src/modify_student.c\
-src/search_student.c\
-src/utility.c\
+src/modify_student.c src/search_student.c src/display_student.c\
+src/utility.c
 
-TEST_SRC = ${SRC}\
-test/studentdetails_test.c\
-unity/unity.c\
+# All test source files
+TEST_SRC = test/studentdetails_test.c\
+unity/unity.c
 
-TEST_OUTPUT = $(BUILD)/Test_$(PROJ_NAME).TEST_OUTPUT
-
+# All include folders with header files
 INC = -Iinc\
--Iunity\
+-Iunity
 
-INCLUDE_LIBS = 
-
-PROJECT_OUTPUT = $(BUILD)/$(PROJ_NAME).TEST_OUTPUT
-
+#To check if the OS is Windows or Linux and set the executable file extension and delete command accordingly
 ifdef OS
    RM = del /q
    FixPath = $(subst /,\,$1)
@@ -36,31 +32,26 @@ else
    endif
 endif
 
-DOCUMENTATION_OUTPUT = documentation/html
-
-$(PROJ_NAME):all
-
-.PHONY: run clean test doc all
-
-run: $(PROJ_NAME)
-      ./$(PROJECT_OUTPUT).TEST_OUTPUT
-
-all: $(SRC) $(BUILD)
-      gcc studentdetails.c $(SRC) $(INC) -o $(PROJECT_OUTPUT).TEST_OUTPUT
-
-
-doc:
-      make -C ./documentation
-
-test:$(BUILD)
-      gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
-      ./$(TEST_OUTPUT)
-   
+# Makefile will not run target command if the name with file already exists. To override, use .PHONY
+.PHONY : all run test coverage cppcheck valgrind clean
+all:$(BUILD_DIR)
+	gcc main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC)) $(IN)
+run: all
+	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+test: $(SRC) $(TEST_SRC)
+	gcc $^ $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) $(IN)
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) 
+	
+coverage:${PROJECT_NAME}
+	gcc -fprofile-arcs -ftest-coverage $(SRC) $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) $(IN)
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	gcov -a $(SRC)
+	
+cppcheck: $(SRC)
+	cppcheck --enable=all main.c $(SRC)
 valgrind:
-	valgrind $(call FixPath,$(BUILD)/$(PROJ_NAME).$(EXEC))
+	valgrind $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
 clean:
-      rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT) students.bin
-
-$(BUILD):
-      mkdir build
+	$(RM) $(call FixPath,$(BUILD_DIR)/*)
+	rmdir $(BUILD_DIR)
