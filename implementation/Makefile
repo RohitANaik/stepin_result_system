@@ -22,6 +22,20 @@ INCLUDE_LIBS =
 
 PROJECT_OUTPUT = $(BUILD)/$(PROJ_NAME).TEST_OUTPUT
 
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
+   IN=
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+	  EXEC = out
+	  IN=-lm
+   endif
+endif
+
 DOCUMENTATION_OUTPUT = documentation/html
 
 $(PROJ_NAME):all
@@ -40,6 +54,9 @@ doc:
 test:$(BUILD)
       gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
       ./$(TEST_OUTPUT)
+   
+valgrind:
+	valgrind $(call FixPath,$(BUILD)/$(PROJ_NAME).$(EXEC))
 
 clean:
       rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT) students.bin
